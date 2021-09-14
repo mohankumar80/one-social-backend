@@ -5,18 +5,16 @@ const followUser = async (req, res) => {
 	try {
 		const { userId } = req.params;
 		const { toBeFollowedUserID } = req.body;
-		const user = await User.findById(userId).populate('following')
-		.populate({ path: "following", 
-			populate: { path: "posts", 
-			populate: { path: "userId" }
-			}
-		})
+		const user = await User.findById(userId)
 		user.following.push(toBeFollowedUserID);
 		user.save();
-		const followedUser = await User.findById(toBeFollowedUserID);
+		const followedUser = await User.findById(toBeFollowedUserID).populate({
+			path: "posts",
+			populate: { path: "userId" }
+		})
 		followedUser.followers.push(userId);
 		followedUser.save();
-		res.status(200).json({ success: true, following: user.following })
+		res.status(200).json({ success: true, following: followedUser })
 	} catch (error) {
 		res.status(400).json({ success: false, message: 'failed to follow the user' })
 	}
