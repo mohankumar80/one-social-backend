@@ -29,12 +29,6 @@ const usersSchema = new Schema({
 			ref: 'User'
 		}
 	],
-	feed: [
-		{
-			type: mongoose.Types.ObjectId,
-			ref: 'Post'
-		}
-	],
 	posts: [
 		{
 			type: mongoose.Types.ObjectId,
