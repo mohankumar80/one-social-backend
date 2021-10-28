@@ -1,6 +1,9 @@
 const express = require('express');
 const usersRouter = express.Router();
-const { loginUser, signupUser, getFeed, searchUser, myPosts, addPost, deletePost, getAllLikedPosts, likePost, unlikePost, getAllFollowing, followUser, unfollowUser, getComments, commentOnPost, deleteComment } = require('../controllers/index')
+const { loginUser, signupUser, getFeed, searchUser, 
+    myPosts, addPost, deletePost, getAllLikedPosts, 
+    likePost, unlikePost, getAllFollowing, followUser, 
+    unfollowUser, getComments, commentOnPost, deleteComment, getAllPostComments } = require('../controllers/index')
 
 /* user login */
 usersRouter.route('/login')
@@ -52,6 +55,7 @@ usersRouter.route('/:userId/post/comment')
 .get(getComments)
 
 usersRouter.route('/:userId/post/comment/:postId')
+.get(getAllPostComments)
 .post(commentOnPost)
 .delete(deleteComment)
 

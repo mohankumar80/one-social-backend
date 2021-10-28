@@ -12,9 +12,13 @@ const getAllLikedPosts = require('./all-liked-posts.controller');
 const likePost = require('./like-post.controller');
 const unlikePost = require('./unlike-post.controller');
 const getComments = require('./get-comments.controller');
+const getAllPostComments = require('./get-all-post-comments.controller')
 const commentOnPost = require('./comment-on-post.controller');
 const deleteComment = require('./delete-comment.controller');
 
 module.exports = {
-	loginUser, signupUser, getFeed, searchUser,myPosts, addPost, deletePost, getAllLikedPosts, likePost, unlikePost, getAllFollowing, followUser, unfollowUser, getComments, commentOnPost, deleteComment
+	loginUser, signupUser, getFeed, searchUser, 
+	myPosts, addPost, deletePost, getAllLikedPosts, 
+	likePost, unlikePost, getAllFollowing, followUser, 
+	unfollowUser, getComments, commentOnPost, deleteComment, getAllPostComments
 }
